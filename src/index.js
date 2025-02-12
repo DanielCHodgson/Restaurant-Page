@@ -1,4 +1,8 @@
-import "./styles.css";
-import { greeting } from "./greeting.js";
+import "./css/modern-reset.css";
+import "./css/styles.css";
+import header from "./header";
+import home from "./home";
 
-console.log(greeting);
+
+header();
+home();

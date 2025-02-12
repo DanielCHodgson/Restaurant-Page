@@ -1,0 +1,113 @@
+@font-face {
+  font-family: "Avenir-Black";
+  src: url("../assets/fonts/AvenirLTStd-Book.otf") format("opentype");
+  font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  background-color: #FEF4EF;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+
+.header {
+  display: grid;
+  grid-template-rows: auto auto;
+  place-items: center;
+}
+
+
+.logo-wrapper {
+  width: clamp(400px, 80%, 90%);
+  border-bottom: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 1rem;
+}
+
+.logo-wrapper h1 {
+  font-family: "Mochiy Pop One", serif;
+  font-size: 6rem;
+  font-weight: 200;
+  color:#F08A5D;
+}
+
+
+#logo {
+  height: 9rem;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+  margin: 1rem;
+}
+
+.nav button {
+  font-family: "Avenir-Book", Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  background-color: inherit;
+  color: #44404d;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+
+.nav button:hover {
+  color: #000;
+  transition: all ease 0.5s;
+}
+
+#content {
+}
+
+.banner-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+.subheading {
+  padding: 2rem;
+  font-family: "Raleway", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #ffffff;
+  font-size: 3rem;
+  line-height: 3rem;
+  text-shadow: 
+        3px 3px 0px #000, /* Top-right shadow */
+        -3px 3px 0px #000, /* Top-left shadow */
+        3px -3px 0px #000, /* Bottom-right shadow */
+        -3px -3px 0px #000, /* Bottom-left shadow */
+        0px 3px 0px #000, /* Top shadow */
+        0px -3px 0px #000, /* Bottom shadow */
+        3px 0px 0px #000, /* Right shadow */
+        -3px 0px 0px #000; /* Left shadow */
+}
+
+
+.sub-tag {
+  font-size: 2rem;
+  line-height: 4rem;
+}
+
+
+#banner-img {
+  width: 100%;
+  height: 100%;
+}
