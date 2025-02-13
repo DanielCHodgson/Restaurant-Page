@@ -12,6 +12,7 @@ const home = () => {
 
     function createCallToActions() {
         const callToActionOne = document.createElement("div");
+        callToActionOne.classList.add("call-to-action");
         callToActionOne.innerHTML = `
             <h2 class="subheading">Good food<br>
                 <span class="sub-tag">美味しい料理</span><br>
@@ -22,13 +23,15 @@ const home = () => {
             </h2>`;
 
         const callToActionTwo = document.createElement("div");
+        callToActionTwo.classList.add("call-to-action");
         callToActionTwo.innerHTML = `
-            <h2>Japanese soul food in the heart of Kelham</h2>
+            <h2 class="subheading">Japanese soul food in the heart of Kelham</h2>
         `;
 
         const callToActionThree = document.createElement("div");
+        callToActionThree.classList.add("call-to-action");
         callToActionThree.innerHTML = `
-            <h2>Award-winning menus all year-round</h2>
+            <h2 class="subheading">Award-winning menus all year-round</h2>
         `;
 
         return [callToActionOne, callToActionTwo, callToActionThree];
@@ -39,13 +42,12 @@ const home = () => {
 
         timer = setInterval(function () {
 
-            const currentCallToAction = bannerWrapper.querySelector('.subheading, h2');
+            const currentCallToAction = bannerWrapper.querySelector('.call-to-action');
             if (currentCallToAction) {
                 currentCallToAction.remove();
             }
 
             const newCallToAction = callToActions[currentIndex];
-            newCallToAction.classList.add('subheading'); 
             bannerWrapper.appendChild(newCallToAction);
 
             bannerWrapper.style.backgroundImage = `url(${backgrounds[currentIndex]})`;
