@@ -6,6 +6,8 @@ const home = () => {
     const content = document.getElementById("content");
     const backgrounds = [restaurant, sushi, tonkatsu];
     const callToActions = createCallToActions();
+    let imageContainer;
+
 
     let currentIndex = 1;
     let timer;
@@ -25,7 +27,8 @@ const home = () => {
         const callToActionTwo = document.createElement("div");
         callToActionTwo.classList.add("call-to-action");
         callToActionTwo.innerHTML = `
-            <h2 class="subheading">Japanese soul food in the heart of Kelham</h2>
+            <h2 class="subheading">Japanese soul food<br>
+            in the heart of Kelham</h2>
         `;
 
         const callToActionThree = document.createElement("div");
@@ -37,37 +40,55 @@ const home = () => {
         return [callToActionOne, callToActionTwo, callToActionThree];
     }
 
-    function runBanner(bannerWrapper) {
+    function runBanner() {
         if (timer) clearInterval(timer);
-
         timer = setInterval(function () {
 
-            const currentCallToAction = bannerWrapper.querySelector('.call-to-action');
-            if (currentCallToAction) {
-                currentCallToAction.remove();
-            }
+            const currentBgImage = document.querySelector('.banner-image');
+
+            const newBgImage = document.createElement('div');
+            newBgImage.classList.add('banner-image');
+            newBgImage.style.backgroundImage = `url(${backgrounds[currentIndex]})`;
 
             const newCallToAction = callToActions[currentIndex];
-            bannerWrapper.appendChild(newCallToAction);
+            newBgImage.appendChild(newCallToAction);
+            content.appendChild(newBgImage);
 
-            bannerWrapper.style.backgroundImage = `url(${backgrounds[currentIndex]})`;
+
+            setTimeout(() => {
+                newBgImage.classList.add('active');
+            }, 50);
+
+            setTimeout(() => {
+                currentBgImage && currentBgImage.classList.remove('active');
+            }, 900);
+
+
+            if (currentBgImage) {
+                currentBgImage.remove();
+            }
 
             currentIndex++;
             if (currentIndex >= backgrounds.length) {
                 currentIndex = 0;
             }
-        }, 5000);  
+        }, 5000);
     }
 
+    function renderInitialBanner() {
+        imageContainer = document.createElement("div");
+        imageContainer.classList.add("banner-image");
+        imageContainer.id = "first-banner";
+        imageContainer.style.backgroundImage = `url(${backgrounds[0]})`;
+        imageContainer.appendChild(callToActions[0]);
+        content.appendChild(imageContainer);
+    }
+
+
     function render() {
-        const bannerWrapper = document.createElement("div");
-        bannerWrapper.classList.add("banner-wrapper");
-
-        bannerWrapper.style.backgroundImage = `url(${backgrounds[0]})`;
-        bannerWrapper.appendChild(callToActions[0]);
-
-        runBanner(bannerWrapper);
-        content.append(bannerWrapper);
+        renderInitialBanner();
+        runBanner();
+        content.append(imageContainer);
     }
 
     render();
