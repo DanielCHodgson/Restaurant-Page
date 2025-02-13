@@ -78,6 +78,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 
+  transition: all ease 1s;
 }
 
 .subheading {
@@ -87,8 +88,7 @@ body {
   font-weight: 600;
   font-style: normal;
   color: #ffffff;
-  font-size: 3rem;
-  line-height: 3rem;
+  font-size: 2rem;
   text-shadow: 
         3px 3px 0px #000, /* Top-right shadow */
         -3px 3px 0px #000, /* Top-left shadow */

@@ -1,22 +1,18 @@
-import backdrop from "./assets/images/restaurant.jpg";
+import restaurant from "./assets/images/restaurant.jpg";
+import sushi from "./assets/images/sushi.jpg";
+import tonkatsu from "./assets/images/tonkatsu.jpg";
 
 const home = () => {
-
     const content = document.getElementById("content");
+    const backgrounds = [restaurant, sushi, tonkatsu];
+    const callToActions = createCallToActions();
 
+    let currentIndex = 1;
+    let timer;
 
-    render();
-
-
-    function render() {
-
-
-        const bannerWrapper = document.createElement("div");
-        bannerWrapper.classList.add("banner-wrapper")
-        bannerWrapper.style.backgroundImage = `url(${backdrop})`
-
-        const callToAction = document.createElement("div");
-        callToAction.innerHTML = `
+    function createCallToActions() {
+        const callToActionOne = document.createElement("div");
+        callToActionOne.innerHTML = `
             <h2 class="subheading">Good food<br>
                 <span class="sub-tag">美味しい料理</span><br>
                 Good company<br>
@@ -25,62 +21,56 @@ const home = () => {
                 <span class="sub-tag">いい時代だ</span>
             </h2>`;
 
+        const callToActionTwo = document.createElement("div");
+        callToActionTwo.innerHTML = `
+            <h2>Japanese soul food in the heart of Kelham</h2>
+        `;
 
-        bannerWrapper.appendChild(callToAction);
-        content.append(bannerWrapper);
+        const callToActionThree = document.createElement("div");
+        callToActionThree.innerHTML = `
+            <h2>Award-winning menus all year-round</h2>
+        `;
+
+        return [callToActionOne, callToActionTwo, callToActionThree];
     }
 
-    /*
+    function runBanner(bannerWrapper) {
+        if (timer) clearInterval(timer);
+
+        timer = setInterval(function () {
+
+            const currentCallToAction = bannerWrapper.querySelector('.subheading, h2');
+            if (currentCallToAction) {
+                currentCallToAction.remove();
+            }
+
+            const newCallToAction = callToActions[currentIndex];
+            newCallToAction.classList.add('subheading'); 
+            bannerWrapper.appendChild(newCallToAction);
+
+            bannerWrapper.style.backgroundImage = `url(${backgrounds[currentIndex]})`;
+
+            currentIndex++;
+            if (currentIndex >= backgrounds.length) {
+                currentIndex = 0;
+            }
+        }, 5000);  
+    }
 
     function render() {
-
         const bannerWrapper = document.createElement("div");
-        bannerWrapper.classList.add("banner-wrapper")
-        bannerWrapper.style.backgroundImage = `url(${backdrop})`
+        bannerWrapper.classList.add("banner-wrapper");
 
-        const subHeading1 = document.createElement("h2");
-        subHeading1.classList.add("subheading");
-        subHeading1.innerText = "GOOD FOOD,";
+        bannerWrapper.style.backgroundImage = `url(${backgrounds[0]})`;
+        bannerWrapper.appendChild(callToActions[0]);
 
-        const subHeadingTag1 = document.createElement("p");
-        subHeadingTag1.textContent = "美味しい料理"
-        subHeadingTag1.classList.add("sub-tag")
-
-        const subHeading2 = document.createElement("h2");
-        subHeading2.classList.add("subheading");
-        subHeading2.innerText = "GOOD FOOD,";
-        
-        const subHeadingTag2 = document.createElement("p");
-        subHeadingTag2.textContent = "良い会社"
-        subHeadingTag2.classList.add("sub-tag")
-
-        const subHeading3 = document.createElement("h2");
-        subHeading3.classList.add("subheading");
-        subHeading3.innerText = "GOOD FOOD,";
-
-        const subHeadingTag3 = document.createElement("p");
-        subHeadingTag3.textContent = "いい時代だ";
-        subHeadingTag3.classList.add("sub-tag")
-
-        bannerWrapper.appendChild(subHeading1);
-        bannerWrapper.appendChild(subHeadingTag1)
-        bannerWrapper.appendChild(subHeading2);
-        bannerWrapper.appendChild(subHeadingTag2)
-        bannerWrapper.appendChild(subHeading3);
-        bannerWrapper.appendChild(subHeadingTag3)
-
+        runBanner(bannerWrapper);
         content.append(bannerWrapper);
     }
 
-    */
+    render();
 
-
-
-    return {
-
-
-    }
-
+    return {};
 };
 
 export default home;
