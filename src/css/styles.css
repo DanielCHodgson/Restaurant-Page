@@ -4,11 +4,20 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Osaka";
+  src: url("../assets/fonts/osaka-re.ttf") format("opentype");
+  font-style: normal;
+}
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+
 body {
-  background-color: #FEF4EF;
+  background-color: #eeeeee;
   display: grid;
   grid-template-rows: auto 1fr;
 }
@@ -22,7 +31,7 @@ body {
 
 
 .logo-wrapper {
-  width: clamp(400px, 80%, 90%);
+  width: clamp(400px, 90%, 100%);
   border-bottom: 1px solid #000;
   display: flex;
   justify-content: center;
@@ -32,7 +41,7 @@ body {
 
 .logo-wrapper h1 {
   font-family: "Mochiy Pop One", serif;
-  font-size: 6rem;
+  font-size: 5rem;
   font-weight: 200;
   color: #F08A5D;
 }
@@ -40,18 +49,18 @@ body {
 @media only screen and (max-width: 666px) {
   .logo-wrapper h1 {
     font-size: 4rem;
-    line-height: 4.5rem;
+    line-height: 4rem;
   }
 }
 
 
 #logo {
-  height: 9rem;
+  height: 7rem;
 }
 
 .nav {
   display: flex;
-  gap: 2rem;
+  gap: 5rem;
   margin: 1rem;
 }
 
@@ -86,12 +95,12 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 2s ease-in-out;
-
 }
 
 
@@ -102,39 +111,21 @@ body {
   opacity: 1;
 }
 
-
-
-
-.call-to-action h2 {
-  padding: 2rem;
-  font-family: "Raleway", serif;
+.subheading {
+  padding: 1rem;
+  font-family: "Osaka", serif;
   font-optical-sizing: auto;
-  font-weight: 600;
+  font-weight: 200;
   font-style: normal;
   color: #ffffff;
-  font-size: 2rem;
-  text-shadow:
-    3px 3px 0px #000,
-    /* Top-right shadow */
-    -3px 3px 0px #000,
-    /* Top-left shadow */
-    3px -3px 0px #000,
-    /* Bottom-right shadow */
-    -3px -3px 0px #000,
-    /* Bottom-left shadow */
-    0px 3px 0px #000,
-    /* Top shadow */
-    0px -3px 0px #000,
-    /* Bottom shadow */
-    3px 0px 0px #000,
-    /* Right shadow */
-    -3px 0px 0px #000;
-  /* Left shadow */
+  font-size: 4rem;
+  line-height: 4rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
 }
 
-.sub-tag {
-  font-size: 2rem;
-  line-height: 4rem;
+span.sub-tag {
+  font-size: 3rem;
+  font-weight: 800;
 }
 
 #banner-img {

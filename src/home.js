@@ -1,6 +1,6 @@
 import restaurant from "./assets/images/restaurant.jpg";
-import sushi from "./assets/images/sushi.jpg";
-import tonkatsu from "./assets/images/tonkatsu.jpg";
+import sushi from "./assets/images/ramen2.jpg";
+import tonkatsu from "./assets/images/plate.jpg";
 
 const home = () => {
     const content = document.getElementById("content");
@@ -24,14 +24,18 @@ const home = () => {
         const callToActionTwo = document.createElement("div");
         callToActionTwo.classList.add("call-to-action");
         callToActionTwo.innerHTML = `
-            <h2 class="subheading">Japanese soul food<br>
-            in the heart of Kelham</h2>
+            <h2 class="subheading">Japanese<br>
+            soul food<br>
+            in the heart<br>
+            of the city</h2>
         `;
 
         const callToActionThree = document.createElement("div");
         callToActionThree.classList.add("call-to-action");
         callToActionThree.innerHTML = `
-            <h2 class="subheading">Award-winning menus all year-round</h2>
+            <h2 class="subheading">Award-winning<br>
+            menus all<br>
+            year-round</h2>
         `;
 
         return [callToActionOne, callToActionTwo, callToActionThree];
@@ -70,7 +74,7 @@ const home = () => {
             if (currentIndex >= backgrounds.length) {
                 currentIndex = 0;
             }
-        }, 5000);
+        }, 10000);
     }
 
     function renderInitialBanner() {
