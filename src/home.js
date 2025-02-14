@@ -6,9 +6,6 @@ const home = () => {
     const content = document.getElementById("content");
     const backgrounds = [restaurant, sushi, tonkatsu];
     const callToActions = createCallToActions();
-    let imageContainer;
-
-
     let currentIndex = 1;
     let timer;
 
@@ -61,12 +58,13 @@ const home = () => {
 
             setTimeout(() => {
                 currentBgImage && currentBgImage.classList.remove('active');
-            }, 900);
+            }, 90);
 
 
-            if (currentBgImage) {
+            setTimeout(() => {
                 currentBgImage.remove();
-            }
+            }, 500);
+
 
             currentIndex++;
             if (currentIndex >= backgrounds.length) {
@@ -76,19 +74,18 @@ const home = () => {
     }
 
     function renderInitialBanner() {
-        imageContainer = document.createElement("div");
-        imageContainer.classList.add("banner-image");
-        imageContainer.id = "first-banner";
-        imageContainer.style.backgroundImage = `url(${backgrounds[0]})`;
-        imageContainer.appendChild(callToActions[0]);
-        content.appendChild(imageContainer);
+        const newBgImage = document.createElement('div');
+        newBgImage.classList.add('banner-image');
+        newBgImage.id = "first-banner";
+        newBgImage.style.backgroundImage = `url(${backgrounds[0]})`;
+        newBgImage.appendChild(callToActions[0]);
+        content.appendChild(newBgImage);
     }
 
 
     function render() {
         renderInitialBanner();
         runBanner();
-        content.append(imageContainer);
     }
 
     render();
