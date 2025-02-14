@@ -62,12 +62,12 @@ const home = () => {
 
             setTimeout(() => {
                 currentBgImage && currentBgImage.classList.remove('active');
-            }, 90);
+            }, 100);
 
 
             setTimeout(() => {
                 currentBgImage.remove();
-            }, 500);
+            }, 2000);
 
 
             currentIndex++;
