@@ -1,12 +1,13 @@
 import logo from "./assets/images/logo.png";
+import home from "./home.js";
 
-const header = () => {
+
+const header = (homeInstance, menu, reservations) => {
 
     const header = document.querySelector(".header");
     const nav = header.querySelector(".nav");
-
-    render();
-    bindEvents();
+    const tabs = [];
+    const content = document.getElementById("content");
 
     function renderHeading() {
         const fragment = document.createDocumentFragment();
@@ -37,25 +38,64 @@ const header = () => {
             button.dataset.tabId = i;
             button.textContent = buttonNames[i];
             nav.appendChild(button);
+            tabs.push(button);
         }
     }
 
-    function handleTabClick(tab) {
-       
+    function clearContent() {
+        if (content.firstChild)
+            content.firstChild.remove();
+    }
 
+    function handleTabClick(event) {
+
+        if (content.querySelector("#carousel")) {
+            console.log("yo")
+            homeInstance.stopBanner();
+        }
+
+        const tab = event.currentTarget;
+
+        switch (tab.dataset.tabId) {
+            case "0":
+                clearContent();
+                menu();
+                console.log("Menus")
+                break;
+            case "1":
+                clearContent();
+                reservations(content);
+                console.log("reservations");
+                break;
+            case "2":
+                clearContent();
+                console.log("Events");
+                break;
+
+        }
+    }
+
+    function handleHomeClick() {
+        clearContent();
+        homeInstance = home();
     }
 
     function render() {
-
         renderHeading();
         renderNav();
     }
 
 
     function bindEvents() {
-        //let tabs = nav.getElementsByClassName("tab");
-        //tabs.array.forEach(tab => tab.addEventHandler("click", handleTabClick(tab))); 
+        tabs.forEach(tab => tab.addEventListener("click", handleTabClick));
+        header.querySelector(".logo-wrapper").addEventListener("click", handleHomeClick);
     }
+
+
+    const getNav = () => nav;
+
+    render();
+    bindEvents()
 
 }
 

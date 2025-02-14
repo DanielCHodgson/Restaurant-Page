@@ -1,6 +1,10 @@
 import fish from "./assets/images/fish.jpg";
+import ramen from "./assets/images/ramen2.jpg";
+import plate from "./assets/images/plate.jpg";
 
-const menu = (parentNode, menus) => {
+const menu = () => {
+
+    const parentNode = document.getElementById("content");
 
     const menuWrapper = document.createElement("div");
     menuWrapper.classList.add("wrapper");
@@ -8,6 +12,16 @@ const menu = (parentNode, menus) => {
     const menuList = document.createElement("div");
     menuList.id = "menu-list";
 
+
+    const menuOne = {
+        title: "MAIN MENU",
+        description: "A variety of dishes made with fresh produce from local independent retailers and specialities direct from Japan.",
+        link: "https://www.fakelink.com",
+        img1: ramen,
+        img2: plate,
+    }
+    
+    const menus = [menuOne];
     
 
     function RenderMenuItem(menu) {
@@ -46,9 +60,6 @@ const menu = (parentNode, menus) => {
 
 
     function createMenuDetails(menu) {
-
-        console.log(menu);
-
         const details = document.createElement("div");
         details.classList.add("menu-details");
 
@@ -70,6 +81,10 @@ const menu = (parentNode, menus) => {
 
 
     function render() {
+
+        if (parentNode.firstChild) {
+            parentNode.firstChild.remove();
+        }
         renderMenuHeader();
         menus.forEach(menu => RenderMenuItem(menu));
         parentNode.appendChild(menuWrapper);

@@ -1,26 +1,10 @@
 import "./css/modern-reset.css";
 import "./css/styles.css";
-import header from "./header";
 import home from "./home";
+import header from "./header";
 import menu from "./menu";
 import reservations from "./reservations";
 
-import ramen from "./assets/images/ramen2.jpg";
-import plate from "./assets/images/plate.jpg";
+const homeInstance = home();
 
-const content = document.getElementById("content");
-
-const menuOne = {
-    title: "MAIN MENU",
-    description: "A variety of dishes made with fresh produce from local independent retailers and specialities direct from Japan.",
-    link: "https://www.fakelink.com",
-    img1: ramen,
-    img2: plate,
-}
-
-const menus = [menuOne];
-
-header();
-// /home();
-menu(content, menus);
-//reservations(content);
+header(homeInstance, menu, reservations);

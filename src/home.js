@@ -2,10 +2,15 @@ import restaurant from "./assets/images/restaurant.jpg";
 import ramen from "./assets/images/ramen2.jpg";
 import plate from "./assets/images/plate.jpg";
 
-const home = () => {
+export default function home() {
     const content = document.getElementById("content");
+
+    const carousel = document.createElement("div");
+    carousel.id = "carousel";
+
     const backgrounds = [restaurant, ramen, plate];
     const callToActions = createCallToActions();
+    
     let currentIndex = 1;
     let timer;
 
@@ -42,7 +47,7 @@ const home = () => {
     }
 
     function runBanner() {
-        if (timer) clearInterval(timer);
+        stopBanner();
         timer = setInterval(function () {
 
             const currentBgImage = document.querySelector('.banner-image');
@@ -53,7 +58,7 @@ const home = () => {
 
             const newCallToAction = callToActions[currentIndex];
             newBgImage.appendChild(newCallToAction);
-            content.appendChild(newBgImage);
+            carousel.appendChild(newBgImage);
 
 
             setTimeout(() => {
@@ -83,18 +88,27 @@ const home = () => {
         newBgImage.id = "first-banner";
         newBgImage.style.backgroundImage = `url(${backgrounds[0]})`;
         newBgImage.appendChild(callToActions[0]);
-        content.appendChild(newBgImage);
+        carousel.appendChild(newBgImage);
+        content.appendChild(carousel);
     }
 
 
+    function stopBanner() {
+        if (timer) clearInterval(timer);
+    }
+
     function render() {
+        if (content.firstChild) {
+            content.firstChild.remove();
+        }
         renderInitialBanner();
         runBanner();
     }
 
     render();
 
-    return {};
-};
+    return {
 
-export default home;
+        stopBanner
+    };
+};
