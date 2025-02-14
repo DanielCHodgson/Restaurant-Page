@@ -3,6 +3,7 @@ import "./css/styles.css";
 import header from "./header";
 import home from "./home";
 import menu from "./menu";
+import reservations from "./reservations";
 
 import ramen from "./assets/images/ramen2.jpg";
 import plate from "./assets/images/plate.jpg";
@@ -21,4 +22,5 @@ const menus = [menuOne];
 
 header();
 // /home();
-menu(content, menus);
+//menu(content, menus);
+reservations(content);

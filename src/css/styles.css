@@ -136,7 +136,7 @@ span.sub-tag {
 }
 
 
-.menu-wrapper {
+.wrapper {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -233,3 +233,31 @@ span.sub-tag {
   color: #FFFFFF;
   background-color: #000;
 }
+
+
+.reservations {
+
+  width: 100%;
+  height: 200px;
+  padding: 4rem;
+  background-color: #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  font-family: "Avenir-Book", Arial, Helvetica, sans-serif;
+
+}
+
+.reservations input {
+  height: 3rem;
+  text-align: center;
+  cursor: pointer;
+}
+.reservations label {
+  
+  font-size: 1.5rem;
+}
+
+
