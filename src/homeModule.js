@@ -2,7 +2,7 @@ import restaurant from "./assets/images/restaurant.jpg";
 import ramen from "./assets/images/ramen2.jpg";
 import plate from "./assets/images/plate.jpg";
 
-export default function home() {
+export default function homeModule() {
     const content = document.getElementById("content");
 
     const carousel = document.createElement("div");

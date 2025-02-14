@@ -1,6 +1,6 @@
 import restaurant from "./assets/images/restaurant2.jpg";
 
-const reservations = (parentNode) => {
+export default function reservations (parentNode) {
 
     const wrapper = document.createElement("div");
     wrapper.classList.add("wrapper");
@@ -17,8 +17,6 @@ const reservations = (parentNode) => {
         container.appendChild(header);
         wrapper.appendChild(container);
     }
-
-
 
     function renderCalendar() {
 
@@ -51,6 +49,3 @@ const reservations = (parentNode) => {
     }
 
 };
-
-
-export default reservations;

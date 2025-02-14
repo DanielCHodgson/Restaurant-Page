@@ -1,10 +1,10 @@
 import "./css/modern-reset.css";
 import "./css/styles.css";
-import home from "./home";
-import header from "./header";
-import menu from "./menu";
-import reservations from "./reservations";
+import homeModule from "./homeModule";
+import headerModule from "./headerModule";
+import menuModule from "./menuModule";
+import reservationsModule from "./reservationsModule";
 
-const homeInstance = home();
+const homeInstance = homeModule();
 
-header(homeInstance, menu, reservations);
+headerModule(homeInstance, menuModule, reservationsModule);

@@ -2,7 +2,7 @@ import fish from "./assets/images/fish.jpg";
 import ramen from "./assets/images/ramen2.jpg";
 import plate from "./assets/images/plate.jpg";
 
-const menu = () => {
+export default function menu() {
 
     const parentNode = document.getElementById("content");
 
@@ -11,7 +11,6 @@ const menu = () => {
 
     const menuList = document.createElement("div");
     menuList.id = "menu-list";
-
 
     const menuOne = {
         title: "MAIN MENU",
@@ -23,7 +22,6 @@ const menu = () => {
     
     const menus = [menuOne];
     
-
     function RenderMenuItem(menu) {
         const fragment = document.createDocumentFragment();
 
@@ -41,7 +39,7 @@ const menu = () => {
 
     function renderMenuHeader() {
         const container = document.createElement("div");
-        container.classList.add("menu-header")
+        container.classList.add("content-header")
         container.style.backgroundImage = `url('${fish}')`;
 
 
@@ -91,11 +89,4 @@ const menu = () => {
     }
 
     render();
-
-    return {
-
-
-    }
 };
-
-export default menu;

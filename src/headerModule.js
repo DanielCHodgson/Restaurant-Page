@@ -1,8 +1,8 @@
 import logo from "./assets/images/logo.png";
-import home from "./home.js";
+import home from "./homeModule.js";
 
 
-const header = (homeInstance, menu, reservations) => {
+export default function headerModule(homeInstance, menu, reservations) {
 
     const header = document.querySelector(".header");
     const nav = header.querySelector(".nav");
@@ -98,5 +98,3 @@ const header = (homeInstance, menu, reservations) => {
     bindEvents()
 
 }
-
-export default header;
