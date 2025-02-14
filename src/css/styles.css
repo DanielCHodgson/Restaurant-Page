@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "Avenir-Black";
+  font-family: "Avenir-Book";
   src: url("../assets/fonts/AvenirLTStd-Book.otf") format("opentype");
   font-style: normal;
 }
@@ -17,7 +17,7 @@
 
 
 body {
-  background-color: #eeeeee;
+  background-color: #F08A5D;
   display: grid;
   grid-template-rows: auto 1fr;
 }
@@ -27,6 +27,7 @@ body {
   display: grid;
   grid-template-rows: auto auto;
   place-items: center;
+  background-color: #eeeeee;
 }
 
 
@@ -107,6 +108,7 @@ body {
 #first-banner {
   opacity: 1;
 }
+
 .banner-image.active {
   opacity: 1;
 }
@@ -131,4 +133,103 @@ span.sub-tag {
 #banner-img {
   width: 100%;
   height: 100%;
+}
+
+
+.menu-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+
+#menu-list {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.menu-item {
+  width: 100%;
+  height: 400px;
+  background-color: #EEEEEE;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+
+.menu-header {
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: grid;
+  place-content: center;
+
+  font-family: "Osaka", serif;
+  font-size: 3rem;
+  font-weight: 100;
+  color: white;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+}
+
+
+.menu-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+}
+
+.menu-details {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 3rem
+}
+
+.menu-details h2 {
+
+  font-family: "Osaka", serif;
+  font-size: 3rem;
+  padding: 0.5rem;
+}
+
+.menu-details p {
+
+  font-family: "Avenir-Book", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  padding: 0.5rem;
+
+}
+
+.menu-details a {
+  margin: none;
+  width: 250px;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Osaka", serif;
+  font-size: 1.5rem;
+  color: #000;
+  border: 1px solid black;
+  transition: all ease 0.5s;
+}
+
+.menu-details a:active {
+  text-decoration: none;
+  color: #000;
+}
+
+.menu-details a:hover {
+  text-decoration: none;
+  color: #FFFFFF;
+  background-color: #000;
 }

@@ -1,10 +1,10 @@
 import restaurant from "./assets/images/restaurant.jpg";
-import sushi from "./assets/images/ramen2.jpg";
-import tonkatsu from "./assets/images/plate.jpg";
+import ramen from "./assets/images/ramen2.jpg";
+import plate from "./assets/images/plate.jpg";
 
 const home = () => {
     const content = document.getElementById("content");
-    const backgrounds = [restaurant, sushi, tonkatsu];
+    const backgrounds = [restaurant, ramen, plate];
     const callToActions = createCallToActions();
     let currentIndex = 1;
     let timer;
