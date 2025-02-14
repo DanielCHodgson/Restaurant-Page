@@ -22,5 +22,5 @@ const menus = [menuOne];
 
 header();
 // /home();
-//menu(content, menus);
-reservations(content);
+menu(content, menus);
+//reservations(content);

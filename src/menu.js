@@ -3,7 +3,7 @@ import fish from "./assets/images/fish.jpg";
 const menu = (parentNode, menus) => {
 
     const menuWrapper = document.createElement("div");
-    menuWrapper.classList.add("menu-wrapper");
+    menuWrapper.classList.add("wrapper");
 
     const menuList = document.createElement("div");
     menuList.id = "menu-list";
