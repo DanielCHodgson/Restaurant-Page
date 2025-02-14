@@ -1,8 +1,10 @@
 import logo from "./assets/images/logo.png";
-import home from "./homeModule.js";
+import eventsModule from "./eventsModule.js";
+import homeModule from "./homeModule.js";
+import menu from "./menuModule.js";
+import reservationsModule from "./reservationsModule.js";
 
-
-export default function headerModule(homeInstance, menu, reservations) {
+export default function headerModule(homeInstance) {
 
     const header = document.querySelector(".header");
     const nav = header.querySelector(".nav");
@@ -50,7 +52,6 @@ export default function headerModule(homeInstance, menu, reservations) {
     function handleTabClick(event) {
 
         if (content.querySelector("#carousel")) {
-            console.log("yo")
             homeInstance.stopBanner();
         }
 
@@ -60,16 +61,14 @@ export default function headerModule(homeInstance, menu, reservations) {
             case "0":
                 clearContent();
                 menu();
-                console.log("Menus")
                 break;
             case "1":
                 clearContent();
-                reservations(content);
-                console.log("reservations");
+                reservationsModule(content);
                 break;
             case "2":
                 clearContent();
-                console.log("Events");
+                eventsModule();
                 break;
 
         }
@@ -77,7 +76,7 @@ export default function headerModule(homeInstance, menu, reservations) {
 
     function handleHomeClick() {
         clearContent();
-        homeInstance = home();
+        homeInstance = homeModule();
     }
 
     function render() {
