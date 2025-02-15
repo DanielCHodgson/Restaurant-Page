@@ -1,10 +1,8 @@
 import eventImg from "./assets/images/event.jpg"
 
-export default function eventsModule() {
+export default function eventsModule(parentNode) {
 
-    console.log("efgdsfgdfhfgh")
 
-    const parentNode = document.getElementById("content");
     const wrapper = document.createElement("div");
     wrapper.classList.add("wrapper");
    
@@ -26,5 +24,14 @@ export default function eventsModule() {
         parentNode.appendChild(wrapper);
     }
 
-    render();
+    function destroy() {
+        parentNode.innerHTML = "";
+    }
+
+
+    return {
+        render,
+        destroy
+    }
+
 };

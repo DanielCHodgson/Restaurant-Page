@@ -1,15 +1,14 @@
 import restaurant from "./assets/images/restaurant2.jpg";
 
-export default function reservations (parentNode) {
+export default function reservationsModule (parentNode) {
+
 
     const wrapper = document.createElement("div");
     wrapper.classList.add("wrapper");
 
-    parentNode.appendChild(wrapper);
-
     function renderHeader() {
         const container = document.createElement("div");
-        container.classList.add("menu-header");
+        container.classList.add("content-header");
         container.style.backgroundImage = `url('${restaurant}')`;
 
         const header = document.createElement("h2");
@@ -39,13 +38,20 @@ export default function reservations (parentNode) {
     }
 
 
-
-
-    render()
-
     function render() {
         renderHeader();
         renderCalendar();
+        parentNode.appendChild(wrapper);
+    }
+
+    function destroy() {
+        parentNode.innerHTML = "";
+    }
+
+
+    return {
+        render,
+        destroy
     }
 
 };

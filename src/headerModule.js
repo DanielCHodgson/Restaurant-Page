@@ -1,19 +1,12 @@
 import logo from "./assets/images/logo.png";
-import eventsModule from "./eventsModule.js";
-import homeModule from "./homeModule.js";
-import menu from "./menuModule.js";
-import reservationsModule from "./reservationsModule.js";
 
-export default function headerModule(homeInstance) {
+export default function parentNodeModule(parentNode, home, menus, reservations, events) {
 
-    const header = document.querySelector(".header");
-    const nav = header.querySelector(".nav");
-    const tabs = [];
-    const content = document.getElementById("content");
+    const navLinks = parentNode.querySelector(".nav");
+    let currentTab = home;
 
     function renderHeading() {
         const fragment = document.createDocumentFragment();
-
         const logoWrapper = document.createElement("div");
         logoWrapper.classList.add("logo-wrapper");
 
@@ -23,77 +16,66 @@ export default function headerModule(homeInstance) {
         logoWrapper.append(logoImg);
 
         const heading = document.createElement("h1");
-        heading.textContent = "饗宴";
+        heading.textparentNode = "饗宴";
         logoWrapper.append(heading);
 
         fragment.append(logoWrapper);
-        header.prepend(fragment);
+        parentNode.prepend(fragment);
     }
 
-
-    function renderNav() {
+    function renderNavLinks() {
         const buttonNames = ["MENUS", "RESERVATIONS", "EVENTS"];
 
-        for (let i = 0; i < 3; i++) {
+        buttonNames.forEach((name, i) => {
             const button = document.createElement("button");
             button.classList.add("tab");
             button.dataset.tabId = i;
-            button.textContent = buttonNames[i];
-            nav.appendChild(button);
-            tabs.push(button);
-        }
+            button.textContent = name;
+            navLinks.appendChild(button);
+            button.addEventListener("click", handleTabClick);
+        });
     }
 
-    function clearContent() {
-        if (content.firstChild)
-            content.firstChild.remove();
-    }
 
     function handleTabClick(event) {
 
-        if (content.querySelector("#carousel")) {
-            homeInstance.stopBanner();
-        }
-
-        const tab = event.currentTarget;
-
-        switch (tab.dataset.tabId) {
+        switch (event.currentTarget.dataset.tabId) {
             case "0":
-                clearContent();
-                menu();
+                switchToTab(currentTab, menus);
                 break;
             case "1":
-                clearContent();
-                reservationsModule(content);
+                switchToTab(currentTab, reservations);
                 break;
             case "2":
-                clearContent();
-                eventsModule();
+                switchToTab(currentTab, events);
                 break;
-
         }
     }
 
     function handleHomeClick() {
-        clearContent();
-        homeInstance = homeModule();
+        switchToTab(currentTab, home);
     }
 
     function render() {
         renderHeading();
-        renderNav();
+        renderNavLinks();
+        parentNode.querySelector(".logo-wrapper").addEventListener("click", handleHomeClick);
     }
 
-
-    function bindEvents() {
-        tabs.forEach(tab => tab.addEventListener("click", handleTabClick));
-        header.querySelector(".logo-wrapper").addEventListener("click", handleHomeClick);
+    function destroy() {
+        parentNode.innerHTML = "";
     }
 
+    function switchToTab(oldTab, newTab) {
+        if (oldTab === newTab) return;
+        oldTab?.destroy();
+        currentTab = newTab;
+        currentTab?.render();
+    }
 
-    const getNav = () => nav;
-
-    render();
-    bindEvents()
+    return {
+        render,
+        destroy
+    }
 
 }

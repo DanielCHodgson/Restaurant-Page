@@ -2,48 +2,45 @@ import restaurant from "./assets/images/restaurant.jpg";
 import ramen from "./assets/images/ramen2.jpg";
 import plate from "./assets/images/plate.jpg";
 
-export default function homeModule() {
-    const content = document.getElementById("content");
-
-    const carousel = document.createElement("div");
-    carousel.id = "carousel";
-
-    const backgrounds = [restaurant, ramen, plate];
-    const callToActions = createCallToActions();
-    
+export default function homeModule(parentNode) {
     let currentIndex = 1;
     let timer;
 
-    function createCallToActions() {
-        const callToActionOne = document.createElement("div");
-        callToActionOne.classList.add("call-to-action");
-        callToActionOne.innerHTML = `
-            <h2 class="subheading">Good food<br>
-                <span class="sub-tag">美味しい料理</span><br>
-                Good company<br>
-                <span class="sub-tag">良い会社</span><br>
-                Good times<br>
-                <span class="sub-tag">いい時代だ</span>
-            </h2>`;
+    const carousel = document.createElement("div");
 
-        const callToActionTwo = document.createElement("div");
-        callToActionTwo.classList.add("call-to-action");
-        callToActionTwo.innerHTML = `
-            <h2 class="subheading">Japanese<br>
-            soul food<br>
-            in the heart<br>
-            of the city</h2>
-        `;
+    carousel.id = "carousel";
+    const backgrounds = [restaurant, ramen, plate];
+    const phrases = [`
+        <h2 class="subheading">Good food<br>
+        <span class="sub-tag">美味しい料理</span><br>
+        Good company<br>
+        <span class="sub-tag">良い会社</span><br>
+        Good times<br>
+        <span class="sub-tag">いい時代だ</span>
+    </h2>
+    `, `
+        <h2 class="subheading">Japanese<br>
+        soul food<br>
+        in the heart<br>
+        of the city</h2>
+    `, `
+        <h2 class="subheading">Japanese<br>
+        soul food<br>
+        in the heart<br>
+        of the city</h2>
+    `];
 
-        const callToActionThree = document.createElement("div");
-        callToActionThree.classList.add("call-to-action");
-        callToActionThree.innerHTML = `
-            <h2 class="subheading">Award-winning<br>
-            menus all<br>
-            year-round</h2>
-        `;
+    const callToActions = createCallToActions(phrases);
 
-        return [callToActionOne, callToActionTwo, callToActionThree];
+    function createCallToActions(phrases) {
+        const elements = [];
+        for (let i = 0; i < phrases.length; i++) {
+            const callToAction = document.createElement("div");
+            callToAction.classList.add("call-to-action");
+            callToAction.innerHTML = phrases[i];
+            elements.push(callToAction);
+        }
+        return elements;
     }
 
     function runBanner() {
@@ -60,20 +57,10 @@ export default function homeModule() {
             newBgImage.appendChild(newCallToAction);
             carousel.appendChild(newBgImage);
 
-
-            setTimeout(() => {
-                newBgImage.classList.add('active');
-            }, 50);
-
-            setTimeout(() => {
-                currentBgImage && currentBgImage.classList.remove('active');
-            }, 100);
-
-
-            setTimeout(() => {
-                currentBgImage.remove();
-            }, 2000);
-
+            //toggle class incrementally to fade images in and out smoothly
+            setTimeout(() => newBgImage.classList.add("active"), 50);
+            setTimeout(() => currentBgImage?.classList.remove("active"), 100);
+            setTimeout(() => currentBgImage?.remove(), 2000);
 
             currentIndex++;
             if (currentIndex >= backgrounds.length) {
@@ -83,32 +70,36 @@ export default function homeModule() {
     }
 
     function renderInitialBanner() {
-        const newBgImage = document.createElement('div');
-        newBgImage.classList.add('banner-image');
-        newBgImage.id = "first-banner";
-        newBgImage.style.backgroundImage = `url(${backgrounds[0]})`;
-        newBgImage.appendChild(callToActions[0]);
-        carousel.appendChild(newBgImage);
-        content.appendChild(carousel);
+        const firstBgImage = document.createElement("div");
+        firstBgImage.classList.add("banner-image", "active");
+        firstBgImage.id = "first-banner";
+        firstBgImage.style.backgroundImage = `url(${backgrounds[0]})`;
+        firstBgImage.appendChild(callToActions[0]);
+        carousel.appendChild(firstBgImage);
+        parentNode.appendChild(carousel);
     }
 
 
     function stopBanner() {
-        if (timer) clearInterval(timer);
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+        }
     }
 
     function render() {
-        if (content.firstChild) {
-            content.firstChild.remove();
-        }
         renderInitialBanner();
         runBanner();
     }
 
-    render();
+    function destroy() {
+        stopBanner();
+        parentNode.innerHTML = "";
+    }
+
 
     return {
-
-        stopBanner
+        render,
+        destroy,
     };
 };

@@ -2,9 +2,7 @@ import fish from "./assets/images/fish.jpg";
 import ramen from "./assets/images/ramen2.jpg";
 import plate from "./assets/images/plate.jpg";
 
-export default function menu() {
-
-    const parentNode = document.getElementById("content");
+export default function menuModule(parentNode) {
 
     const menuWrapper = document.createElement("div");
     menuWrapper.classList.add("wrapper");
@@ -79,7 +77,7 @@ export default function menu() {
 
 
     function render() {
-
+        console.log("Menu rendered!")
         if (parentNode.firstChild) {
             parentNode.firstChild.remove();
         }
@@ -88,5 +86,14 @@ export default function menu() {
         parentNode.appendChild(menuWrapper);
     }
 
-    render();
+    function destroy() {
+            parentNode.innerHTML = "";
+
+    }
+
+
+    return {
+        render,
+        destroy
+    }
 };
