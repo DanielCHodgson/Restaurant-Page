@@ -4,12 +4,6 @@ import plate from "./assets/images/plate.jpg";
 
 export default function menuModule(parentNode) {
 
-    const menuWrapper = document.createElement("div");
-    menuWrapper.classList.add("wrapper");
-
-    const menuList = document.createElement("div");
-    menuList.id = "menu-list";
-
     const menuOne = {
         title: "MAIN MENU",
         description: "A variety of dishes made with fresh produce from local independent retailers and specialities direct from Japan.",
@@ -17,34 +11,32 @@ export default function menuModule(parentNode) {
         img1: ramen,
         img2: plate,
     }
-    
+
     const menus = [menuOne];
-    
-    function RenderMenuItem(menu) {
+
+    function RenderMenuItem(menu, menuList, wrapper) {
         const fragment = document.createDocumentFragment();
 
         const tile = document.createElement("div");
         tile.classList.add("menu-item");
 
-        
         tile.appendChild(createMenuImage(menu.img1));
         tile.appendChild(createMenuDetails(menu));
         tile.appendChild(createMenuImage(menu.img2));
         fragment.appendChild(tile);
         menuList.appendChild(fragment);
-        menuWrapper.appendChild(menuList);
+        wrapper.appendChild(menuList);
     }
 
-    function renderMenuHeader() {
+    function renderMenuHeader(wrapper) {
         const container = document.createElement("div");
         container.classList.add("content-header")
         container.style.backgroundImage = `url('${fish}')`;
 
-
         const header = document.createElement("h2");
         header.textContent = "MENUS";
         container.appendChild(header);
-        menuWrapper.appendChild(container);
+        wrapper.appendChild(container);
     }
 
     function createMenuImage(imgSrc) {
@@ -63,7 +55,7 @@ export default function menuModule(parentNode) {
         title.textContent = menu.title;
         details.appendChild(title);
 
-        const description =  document.createElement("p");
+        const description = document.createElement("p");
         description.textContent = menu.description;
         details.appendChild(description);
 
@@ -77,18 +69,21 @@ export default function menuModule(parentNode) {
 
 
     function render() {
-        console.log("Menu rendered!")
-        if (parentNode.firstChild) {
-            parentNode.firstChild.remove();
-        }
-        renderMenuHeader();
-        menus.forEach(menu => RenderMenuItem(menu));
-        parentNode.appendChild(menuWrapper);
+
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("wrapper");
+
+        const menuList = document.createElement("div");
+        menuList.id = "menu-list";
+
+        renderMenuHeader(wrapper);
+        menus.forEach(menu => RenderMenuItem(menu, menuList, wrapper));
+
+        parentNode.appendChild(wrapper);
     }
 
     function destroy() {
-            parentNode.innerHTML = "";
-
+        parentNode.innerHTML = "";
     }
 
 

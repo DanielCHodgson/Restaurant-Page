@@ -5,10 +5,8 @@ import plate from "./assets/images/plate.jpg";
 export default function homeModule(parentNode) {
     let currentIndex = 1;
     let timer;
+    let carousel;
 
-    const carousel = document.createElement("div");
-
-    carousel.id = "carousel";
     const backgrounds = [restaurant, ramen, plate];
     const phrases = [`
         <h2 class="subheading">Good food<br>
@@ -88,6 +86,8 @@ export default function homeModule(parentNode) {
     }
 
     function render() {
+        carousel = document.createElement("div");
+        carousel.id = "carousel";
         renderInitialBanner();
         runBanner();
     }

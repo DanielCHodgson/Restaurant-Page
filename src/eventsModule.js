@@ -3,11 +3,7 @@ import eventImg from "./assets/images/event.jpg"
 export default function eventsModule(parentNode) {
 
 
-    const wrapper = document.createElement("div");
-    wrapper.classList.add("wrapper");
-   
-
-    function renderEventsHeader() {
+    function renderEventsHeader(wrapper) {
         const container = document.createElement("div");
         container.classList.add("content-header")
         container.style.backgroundImage = `url('${eventImg}')`;
@@ -20,7 +16,10 @@ export default function eventsModule(parentNode) {
 
 
     function render() {
-        renderEventsHeader();
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("wrapper");
+
+        renderEventsHeader(wrapper);
         parentNode.appendChild(wrapper);
     }
 
