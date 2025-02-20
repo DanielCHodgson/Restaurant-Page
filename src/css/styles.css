@@ -160,7 +160,8 @@ body {
   color: white;
 }
 
-.wrapper, .carousel {
+.wrapper,
+.carousel {
   opacity: 0;
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
@@ -173,7 +174,8 @@ body {
   align-items: center;
 }
 
-.carousel.show, .wrapper.show {
+.carousel.show,
+.wrapper.show {
   opacity: 1;
   transform: translateY(0);
 }
@@ -287,6 +289,25 @@ span.sub-tag {
   text-decoration: none;
   color: var(--brilliant-white);
   background-color: #000;
+}
+
+@media (max-width: 1200px) {
+  .menu-item {
+    grid-template-columns: 1fr 1fr;
+  }
+  .menu-item h2 {
+    padding: 0;
+    line-height: 3rem;
+  }
+
+
+  .menu-item:nth-child(odd) img:first-child {
+    display: none;
+  }
+
+  .menu-item:nth-child(even) img:last-child {
+    display: none;
+  }
 }
 
 
