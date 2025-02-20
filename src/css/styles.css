@@ -160,12 +160,22 @@ body {
   color: white;
 }
 
+.wrapper, .carousel {
+  opacity: 0;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
 .wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
+}
+
+.carousel.show, .wrapper.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .banner-image {

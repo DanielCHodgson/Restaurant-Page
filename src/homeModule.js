@@ -90,6 +90,9 @@ export default function homeModule(parentNode) {
         carousel.id = "carousel";
         renderInitialBanner();
         runBanner();
+        requestAnimationFrame(() => {
+            carousel.classList.add("show");
+        });
     }
 
     function destroy() {

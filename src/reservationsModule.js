@@ -47,6 +47,9 @@ export default function reservationsModule(parentNode) {
         renderHeader(wrapper);
         renderCalendar(wrapper)
         parentNode.appendChild(wrapper);
+        requestAnimationFrame(() => {
+            wrapper.classList.add("show");
+        });
     }
 
     function destroy() {

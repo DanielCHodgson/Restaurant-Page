@@ -98,10 +98,10 @@ export default function menuModule(parentNode) {
         menuList.id = "menu-list";
         wrapper.appendChild(menuList);
         menus.forEach(menu => renderMenuItem(menu, menuList));
-
-        
-
         parentNode.appendChild(wrapper);
+        requestAnimationFrame(() => {
+            wrapper.classList.add("show");
+        });
     }
 
     function destroy() {

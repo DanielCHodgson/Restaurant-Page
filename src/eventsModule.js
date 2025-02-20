@@ -104,6 +104,9 @@ export default function eventsModule(parentNode) {
         renderEventsSlug(wrapper);
         renderUpcomingEvents(wrapper, events);
         parentNode.appendChild(wrapper);
+        requestAnimationFrame(() => {
+            wrapper.classList.add("show");
+        });
     }
 
     function destroy() {
