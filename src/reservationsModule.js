@@ -2,14 +2,15 @@ import restaurant from "./assets/images/restaurant2.jpg";
 import contentBannerModule from "./contentBannerModule";
 
 export default function reservationsModule(parentNode) {
-
-      const banner = contentBannerModule().generateBanner(restaurant, "RESERVATIONS");
+    const banner = contentBannerModule().generateBanner(restaurant, "RESERVATIONS");
 
     function renderDatePicker(wrapper) {
+        const fragment = document.createDocumentFragment();
+
         const reservations = document.createElement("div");
         reservations.classList.add("reservations");
 
-        const dateEntry = document.createElement("div")
+        const dateEntry = document.createElement("div");
         dateEntry.classList.add("date-selector");
 
         const label = document.createElement("label");
@@ -25,20 +26,28 @@ export default function reservationsModule(parentNode) {
         dateEntry.appendChild(dateInput);
 
         const disclaimer = document.createElement("h2");
-        disclaimer.textContent = "This page is ugly and unfinished!"
+        disclaimer.textContent = "This page is ugly and unfinished!";
 
         reservations.appendChild(dateEntry);
         reservations.appendChild(disclaimer);
-        wrapper.appendChild(reservations);
-    }
 
+        fragment.appendChild(reservations);
+
+        wrapper.appendChild(fragment);
+    }
 
     function render() {
         const wrapper = document.createElement("div");
         wrapper.classList.add("wrapper");
-        wrapper.appendChild(banner);
-        renderDatePicker(wrapper)
+
+        const fragment = document.createDocumentFragment();
+        fragment.appendChild(banner);
+
+        renderDatePicker(fragment);
+
+        wrapper.appendChild(fragment);
         parentNode.appendChild(wrapper);
+
         requestAnimationFrame(() => {
             wrapper.classList.add("show");
         });
@@ -48,10 +57,8 @@ export default function reservationsModule(parentNode) {
         parentNode.innerHTML = "";
     }
 
-
     return {
         render,
         destroy
-    }
-
+    };
 };

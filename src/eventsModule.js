@@ -87,11 +87,14 @@ export default function eventsModule(parentNode) {
 
 
     function render() {
+
+        const fragment = document.createDocumentFragment();
         const wrapper = document.createElement("div");
         wrapper.classList.add("wrapper");
-        wrapper.appendChild(banner);
-        renderEventsSlug(wrapper);
-        renderUpcomingEvents(wrapper, events);
+        fragment.appendChild(banner);
+        renderEventsSlug(fragment);
+        renderUpcomingEvents(fragment, events);
+        wrapper.appendChild(fragment);
         parentNode.appendChild(wrapper);
         requestAnimationFrame(() => {
             wrapper.classList.add("show");

@@ -37,18 +37,15 @@ export default function menuModule(parentNode) {
 
     const menus = [menuOne, menuTwo, menuThree];
 
-    function renderMenuItem(menu, menuList) {
-        const fragment = document.createDocumentFragment();
-
+    function createMenuItem(menu) {
         const tile = document.createElement("div");
         tile.classList.add("menu-item");
 
-        tile.appendChild(createMenuImage(menu.img1));
-        tile.appendChild(createMenuDetails(menu));
-        tile.appendChild(createMenuImage(menu.img2));
+        tile.append(createMenuImage(menu.img1));
+        tile.append(createMenuDetails(menu));
+        tile.append(createMenuImage(menu.img2));
 
-        fragment.appendChild(tile);
-        menuList.appendChild(fragment);
+        return tile;
     }
 
     function createMenuImage(imgSrc) {
@@ -79,24 +76,29 @@ export default function menuModule(parentNode) {
     }
 
     function render() {
-
         const wrapper = document.createElement("div");
         wrapper.classList.add("wrapper");
 
-        wrapper.appendChild(banner)
+        const fragment = document.createDocumentFragment();
+        fragment.append(banner);
 
         const menuList = document.createElement("div");
         menuList.id = "menu-list";
 
-        wrapper.appendChild(menuList);
-        menus.forEach(menu => renderMenuItem(menu, menuList));
+        const menuFragment = document.createDocumentFragment();
+        menus.forEach(menu => menuFragment.append(createMenuItem(menu)));
 
+        menuList.appendChild(menuFragment);
+
+        fragment.append(menuList);
+        wrapper.appendChild(fragment);
         parentNode.appendChild(wrapper);
 
         requestAnimationFrame(() => {
             wrapper.classList.add("show");
         });
     }
+
 
     function destroy() {
         parentNode.innerHTML = "";
