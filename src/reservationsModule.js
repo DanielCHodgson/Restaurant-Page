@@ -1,19 +1,11 @@
 import restaurant from "./assets/images/restaurant2.jpg";
+import contentBannerModule from "./contentBannerModule";
 
 export default function reservationsModule(parentNode) {
 
-    function renderHeader(wrapper) {
-        const container = document.createElement("div");
-        container.classList.add("content-header");
-        container.style.backgroundImage = `url('${restaurant}')`;
+      const banner = contentBannerModule().generateBanner(restaurant, "RESERVATIONS");
 
-        const header = document.createElement("h2");
-        header.textContent = "RESERVATIONS";
-        container.appendChild(header);
-        wrapper.appendChild(container);
-    }
-
-    function renderCalendar(wrapper) {
+    function renderDatePicker(wrapper) {
         const reservations = document.createElement("div");
         reservations.classList.add("reservations");
 
@@ -44,8 +36,8 @@ export default function reservationsModule(parentNode) {
     function render() {
         const wrapper = document.createElement("div");
         wrapper.classList.add("wrapper");
-        renderHeader(wrapper);
-        renderCalendar(wrapper)
+        wrapper.appendChild(banner);
+        renderDatePicker(wrapper)
         parentNode.appendChild(wrapper);
         requestAnimationFrame(() => {
             wrapper.classList.add("show");

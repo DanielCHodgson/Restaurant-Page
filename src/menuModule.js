@@ -5,8 +5,11 @@ import lunch1 from "./assets/images/lunch1.jpg";
 import lunch2 from "./assets/images/lunch2.jpg";
 import beers from "./assets/images/beers.jpg";
 import softDrinks from "./assets/images/soft-drinks.jpg";
+import contentBannerModule from "./contentBannerModule";
 
 export default function menuModule(parentNode) {
+
+    const banner = contentBannerModule().generateBanner(menuPlate, "MENUS");
 
     const menuOne = {
         title: "MAIN MENU",
@@ -26,7 +29,7 @@ export default function menuModule(parentNode) {
 
     const menuThree = {
         title: "Drinks MENU",
-        description: "Browse our range of imported beers, spirits, doft drinks and more. A selection of hot drinks is also available.",
+        description: "Browse our range of imported beers, spirits, soft drinks and more. A selection of hot drinks is also available.",
         link: "https://www.fakelink.com",
         img1: beers,
         img2: softDrinks,
@@ -43,19 +46,9 @@ export default function menuModule(parentNode) {
         tile.appendChild(createMenuImage(menu.img1));
         tile.appendChild(createMenuDetails(menu));
         tile.appendChild(createMenuImage(menu.img2));
+
         fragment.appendChild(tile);
         menuList.appendChild(fragment);
-    }
-
-    function renderMenuHeader(wrapper) {
-        const container = document.createElement("div");
-        container.classList.add("content-header")
-        container.style.backgroundImage = `url('${menuPlate}')`;
-
-        const header = document.createElement("h2");
-        header.textContent = "MENUS";
-        container.appendChild(header);
-        wrapper.appendChild(container);
     }
 
     function createMenuImage(imgSrc) {
@@ -64,7 +57,6 @@ export default function menuModule(parentNode) {
         img.src = imgSrc;
         return img;
     }
-
 
     function createMenuDetails(menu) {
         const details = document.createElement("div");
@@ -86,19 +78,21 @@ export default function menuModule(parentNode) {
         return details;
     }
 
-
     function render() {
 
         const wrapper = document.createElement("div");
         wrapper.classList.add("wrapper");
 
-        renderMenuHeader(wrapper);
+        wrapper.appendChild(banner)
 
         const menuList = document.createElement("div");
         menuList.id = "menu-list";
+
         wrapper.appendChild(menuList);
         menus.forEach(menu => renderMenuItem(menu, menuList));
+
         parentNode.appendChild(wrapper);
+
         requestAnimationFrame(() => {
             wrapper.classList.add("show");
         });
@@ -107,7 +101,6 @@ export default function menuModule(parentNode) {
     function destroy() {
         parentNode.innerHTML = "";
     }
-
 
     return {
         render,

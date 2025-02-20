@@ -1,0 +1,19 @@
+export default function contentBannerModule() {
+
+  function generateBanner(img, heading) {
+        const container = document.createElement("div");
+        container.classList.add("content-header")
+        container.style.backgroundImage = `url('${img}')`;
+
+        const header = document.createElement("h2");
+        header.textContent = heading;
+        container.appendChild(header);
+        return container;
+    }
+
+
+    return {
+        generateBanner
+    }
+
+}
