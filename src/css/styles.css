@@ -13,11 +13,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+  --primary-color: #F08A5D;
+  --primary-colour-darker: #c56e49;
+  --secondary-color: #EEEEEE;
+  --brilliant-white: #FFFFFF;
 
+  --title-font: "Mochiy Pop One", serif;
+  --primary-font: "Avenir-Book", Arial, Helvetica, sans-serif;
+  --header-font: "Osaka", arial;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--header-font);
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+p {
+  font-family: var(--primary-font);
+}
+
+button {
+  font-family: var(--primary-font);
+}
 
 ::-webkit-scrollbar {
-  width: 10px; 
-  height: 10px; 
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -38,7 +71,7 @@
 
 
 body {
-  background-color: #F08A5D;
+  background-color: var(--primary-colour-darker);
   display: grid;
   grid-template-rows: auto 1fr;
   overflow: hidden;
@@ -48,7 +81,7 @@ body {
   display: grid;
   grid-template-rows: auto auto;
   place-items: center;
-  background-color: #eeeeee;
+  background-color: var(--secondary-color);
 }
 
 
@@ -67,10 +100,10 @@ body {
 }
 
 .logo-wrapper h1 {
-  font-family: "Mochiy Pop One", serif;
+  font-family: --title-font;
   font-size: 5rem;
   font-weight: 200;
-  color: #F08A5D;
+  color: var(--primary-color);
 }
 
 @media only screen and (max-width: 666px) {
@@ -79,7 +112,6 @@ body {
     line-height: 4rem;
   }
 }
-
 
 #logo {
   height: 7rem;
@@ -92,7 +124,6 @@ body {
 }
 
 .tab {
-  font-family: "Avenir-Book", Arial, Helvetica, sans-serif;
   font-size: 1.2rem;
   border: none;
   outline: none;
@@ -111,6 +142,30 @@ body {
   width: 100%;
   position: relative;
   overflow: auto;
+}
+
+.content-header {
+  width: 100%;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  place-content: center;
+}
+
+.content-header h2 {
+  font-size: 5rem;
+  font-weight: 100;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
+  color: white;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .banner-image {
@@ -142,11 +197,10 @@ body {
 
 .subheading {
   padding: 1rem;
-  font-family: "Osaka", serif;
   font-optical-sizing: auto;
   font-weight: 200;
   font-style: normal;
-  color: #ffffff;
+  color: var(--brilliant-white);
   font-size: 4rem;
   line-height: 4rem;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
@@ -162,60 +216,32 @@ span.sub-tag {
   height: 100%;
 }
 
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-
 #menu-list {
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-rows: 1fr auto;
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
 }
 
 .menu-item {
   width: 100%;
   height: 400px;
-  background-color: #EEEEEE;
+  background-color: var(--secondary-color);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
 }
 
-
-.content-header {
-  height: 400px;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  display: grid;
-  place-content: center;
-
-  font-family: "Osaka", serif;
-  font-size: 3rem;
-  font-weight: 100;
-  color: white;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
-}
-
-
 .menu-img {
   width: 100%;
-  height: 100%;
+  height: 400px;
   object-fit: cover;
   object-position: center;
-
 }
 
 .menu-details {
-  width: 100%;
-  height: 100%;
-  padding: 0.5rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -224,19 +250,9 @@ span.sub-tag {
   gap: 0.5rem;
 }
 
-.menu-details h2 {
-
-  font-family: "Osaka", serif;
-  font-size: 3rem;
-  padding: 0.5rem;
-}
-
 .menu-details p {
-
-  font-family: "Avenir-Book", Arial, Helvetica, sans-serif;
   font-size: 1rem;
-  padding: 0.5rem;
-
+  padding: 0 3rem 1rem 3rem;
 }
 
 .menu-details a {
@@ -244,11 +260,11 @@ span.sub-tag {
   width: 250px;
   text-align: center;
   text-decoration: none;
-  font-family: "Osaka", serif;
   font-size: 1.5rem;
   color: #000;
   border: 1px solid black;
   transition: all ease 0.5s;
+  font-family: var(--header-font);
 }
 
 .menu-details a:active {
@@ -258,24 +274,20 @@ span.sub-tag {
 
 .menu-details a:hover {
   text-decoration: none;
-  color: #FFFFFF;
+  color: var(--brilliant-white);
   background-color: #000;
 }
 
 
 .reservations {
-
   width: 100%;
   height: 200px;
   padding: 4rem;
-  background-color: #eeeeee;
+  background-color: var(--secondary-color);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-
-  font-family: "Avenir-Book", Arial, Helvetica, sans-serif;
-
 }
 
 .reservations input {
@@ -287,4 +299,86 @@ span.sub-tag {
 .reservations label {
 
   font-size: 1.5rem;
+}
+
+.slug {
+  max-width: 600px;
+  padding: 1rem;
+  color: var(--brilliant-white);
+  font-size: 1.15rem;
+  text-align: center;
+  line-height: 2rem;
+}
+
+#events-header {
+  color: var(--brilliant-white);
+}
+
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+
+#event-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.event-item {
+  width: clamp(500px, 60%, 100%);
+  height: 400px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-content: center;
+  padding-bottom: 1rem;
+}
+
+.event-details {
+  padding: 1rem 15%;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background-color: #f1f1f1;
+}
+
+.event-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.event-details p:first-of-type {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.event-details button {
+  padding: 0.5rem;
+  width: 250px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  font-family: var(--header-font);
+  font-size: 2rem;
+  color: var(--brilliant-white);
+  text-decoration: none;
+  transition: all ease 0.8s;
+  cursor: pointer;
+}
+
+.event-details button:hover {
+  color: #000;
+  scale: 1.02;
 }
