@@ -3,6 +3,8 @@ import ramen from "./assets/images/ramen2.jpg";
 import plate from "./assets/images/plate.jpg";
 import lunch1 from "./assets/images/lunch1.jpg";
 import lunch2 from "./assets/images/lunch2.jpg";
+import beers from "./assets/images/beers.jpg";
+import softDrinks from "./assets/images/soft-drinks.jpg";
 
 export default function menuModule(parentNode) {
 
@@ -10,7 +12,7 @@ export default function menuModule(parentNode) {
         title: "MAIN MENU",
         description: "A variety of dishes made with fresh produce from local independent retailers and specialities direct from Japan.",
         link: "https://www.fakelink.com",
-        img1: ramen,
+        img1: lunch1,
         img2: plate,
     }
 
@@ -18,7 +20,7 @@ export default function menuModule(parentNode) {
         title: "Lunch MENU",
         description: "Lighter choices made with the same fresh produce and specialities. Available 12pm-3pm",
         link: "https://www.fakelink.com",
-        img1: lunch1,
+        img1: ramen,
         img2: lunch2,
     }
 
@@ -26,11 +28,11 @@ export default function menuModule(parentNode) {
         title: "Drinks MENU",
         description: "Browse our range of imported beers, spirits, doft drinks and more. A selection of hot drinks is also available.",
         link: "https://www.fakelink.com",
-        img1: plate,
-        img2: ramen,
+        img1: beers,
+        img2: softDrinks,
     }
 
-    const menus = [menuOne, menuTwo];
+    const menus = [menuOne, menuTwo, menuThree];
 
     function renderMenuItem(menu, menuList) {
         const fragment = document.createDocumentFragment();
