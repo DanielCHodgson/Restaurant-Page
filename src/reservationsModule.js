@@ -17,18 +17,26 @@ export default function reservationsModule(parentNode) {
         const reservations = document.createElement("div");
         reservations.classList.add("reservations");
 
+        const dateEntry = document.createElement("div")
+        dateEntry.classList.add("date-selector");
+
         const label = document.createElement("label");
         label.for = "date-input";
         label.textContent = "Choose a date:";
+        dateEntry.appendChild(label);
 
         const dateInput = document.createElement("input");
         dateInput.type = "date";
         dateInput.id = "date-input";
         dateInput.readOnly = true;
         dateInput.placeholder = "Select a Date";
+        dateEntry.appendChild(dateInput);
 
-        reservations.appendChild(label);
-        reservations.appendChild(dateInput);
+        const disclaimer = document.createElement("h2");
+        disclaimer.textContent = "This page is ugly and unfinished!"
+
+        reservations.appendChild(dateEntry);
+        reservations.appendChild(disclaimer);
         wrapper.appendChild(reservations);
     }
 
