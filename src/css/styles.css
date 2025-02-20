@@ -295,11 +295,11 @@ span.sub-tag {
   .menu-item {
     grid-template-columns: 1fr 1fr;
   }
+
   .menu-item h2 {
     padding: 0;
     line-height: 3rem;
   }
-
 
   .menu-item:nth-child(odd) img:first-child {
     display: none;
@@ -308,12 +308,16 @@ span.sub-tag {
   .menu-item:nth-child(even) img:last-child {
     display: none;
   }
+
+  #reservations-title {
+    font-size: 1.8rem;
+  }
 }
 
 
 .reservations {
   width: 100%;
-  height: 200px;
+  height: 400px;
   padding: 4rem;
   background-color: var(--secondary-color);
   display: flex;
