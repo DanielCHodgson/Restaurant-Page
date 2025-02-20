@@ -12,7 +12,15 @@ export default function menuModule(parentNode) {
         img2: plate,
     }
 
-    const menus = [menuOne];
+    const menuTwo = {
+        title: "Lunch MENU",
+        description: "Lighter choices made with the same fresh produce and specialities. Available 12pm-3pm",
+        link: "https://www.fakelink.com",
+        img1: plate,
+        img2: ramen,
+    }
+
+    const menus = [menuOne, menuTwo];
 
     function RenderMenuItem(menu, menuList, wrapper) {
         const fragment = document.createDocumentFragment();

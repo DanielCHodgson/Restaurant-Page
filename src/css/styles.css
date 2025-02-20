@@ -10,18 +10,39 @@
   font-style: normal;
 }
 
-
-
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+::-webkit-scrollbar {
+  width: 10px; 
+  height: 10px; 
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
 
 
 body {
   background-color: #F08A5D;
   display: grid;
   grid-template-rows: auto 1fr;
+  overflow: hidden;
 }
-
 
 .header {
   display: grid;
@@ -32,12 +53,12 @@ body {
 
 
 .logo-wrapper {
-  width: clamp(400px, 80%, 100%);
+  width: clamp(400px, 80vw, 100%);
   border-bottom: 1px solid #000;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  padding-bottom: 1rem;
+  padding: 1rem 0;
 }
 
 #logo,
@@ -89,6 +110,7 @@ body {
 #content {
   width: 100%;
   position: relative;
+  overflow: auto;
 }
 
 .banner-image {
@@ -153,6 +175,7 @@ span.sub-tag {
   height: 100%;
   display: grid;
   grid-template-rows: 1fr auto;
+  gap: 0.5rem;
 }
 
 .menu-item {
